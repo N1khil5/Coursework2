@@ -6,6 +6,7 @@
 package coursework2;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  *
@@ -37,26 +38,39 @@ public class Application {
                 Scanner s = new Scanner(System.in);
                 option = s.nextInt();
 
-                User Saul = new User("Saul", "Goodman", bankAccount);
+                ArrayList<User> User = new ArrayList<>();
+
                 double[] transactionSaul = {50, 10, -20, 10, -20, 20, 10, 50, -10, 10, -10, 50};
+                ArrayList<Double> tSaul = new ArrayList<Double>();
                 for (int i = 0; i < transactionSaul.length; i++) {
-                    Saul.addTransaction(transactionSaul[i]);
+                    tSaul.add(transactionSaul[i]);
                 }
-                User Walter = new User("Walter", "White", bankAccount);
+                User Saul = new User("Saul", "Goodman", bankAccount, tSaul);
+                User.add(Saul);
+
                 double[] transactionWalter = {20, 20, -20, 50, -20, 10, 50, 50, -20, 10, 10};
+                ArrayList<Double> tWalter = new ArrayList<Double>();
                 for (int i = 0; i < transactionWalter.length; i++) {
-                    Walter.addTransaction(transactionWalter[i]);
+                    tWalter.add(transactionWalter[i]);
                 }
-                User Jessie = new User("Jessie", "Pinkman", bankAccount);
+                User Walter = new User("Walter", "White", bankAccount, tWalter);
+                User.add(Walter);
+
                 double[] transactionJessie = {50, 10, 10, -10, -10, 50, 20, -10, -20};
+                ArrayList<Double> tJessie = new ArrayList<Double>();
                 for (int i = 0; i < transactionJessie.length; i++) {
-                    Jessie.addTransaction(transactionJessie[i]);
+                    tJessie.add(transactionJessie[i]);
                 }
-                User Hank = new User("Hank", "Schrader", bankAccount);
+                User Jessie = new User("Jessie", "Pinkman", bankAccount, tJessie);
+                User.add(Jessie);
+
                 double[] transactionHank = {50, 10, -20, 20, 10, -20};
+                ArrayList<Double> tHank = new ArrayList<Double>();
                 for (int i = 0; i < transactionHank.length; i++) {
-                    Hank.addTransaction(transactionHank[i]);
+                    tHank.add(transactionHank[i]);
                 }
+                User Hank = new User("Hank", "Schrader", bankAccount, tHank);
+                User.add(Hank);
 
                 switch (option) {
                     case 1:
@@ -75,21 +89,25 @@ public class Application {
                             for (int i = 0; i < transactionSaul.length; i++) {
                                 Saul.addTransaction(transactionSaul[i]);
                             }
+                            Saul.start();
                             User Walter = new User("Walter", "White", bankAccount);
                             double[] transactionWalter = {20, 20, -20, 50, -20, 10, 50, 50, -20, 10, 10};
                             for (int i = 0; i < transactionWalter.length; i++) {
                                 Walter.addTransaction(transactionWalter[i]);
                             }
+                            Walter.start();
                             User Jessie = new User("Jessie", "Pinkman", bankAccount);
                             double[] transactionJessie = {50, 10, 10, -10, -10, 50, 20, -10, -20};
                             for (int i = 0; i < transactionJessie.length; i++) {
                                 Jessie.addTransaction(transactionJessie[i]);
                             }
+                            Jessie.start();
                             User Hank = new User("Hank", "Schrader", bankAccount);
                             double[] transactionHank = {50, 10, -20, 20, 10, -20};
                             for (int i = 0; i < transactionHank.length; i++) {
                                 Hank.addTransaction(transactionHank[i]);
-                            } */
+                            }*/
+                            
                             continue;
                         } else {
                             System.out.println("What would you like to name the user?");
@@ -107,14 +125,15 @@ public class Application {
                         name = s.next();
                         System.out.println("Please enter the last name of the user");
                         surname = s.next();
+                        System.out.println("Your account number is 9876543210 and your balance in your account is $1980");
                         break;
                     case 3:
                         System.out.println("You have selected Run Simulation");
-                        Walter.start();
-                        Saul.start();
-                        Jessie.start();
-                        Hank.start();
-                        break;
+                        for(int i=0;i<4;i++)
+                        {
+                            User.get(i).start();
+                        }
+                        continue;
                     case 4:
                         System.out.println();
                         System.out.println("You have selected to exit from the program.");
