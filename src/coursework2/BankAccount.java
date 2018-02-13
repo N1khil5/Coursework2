@@ -30,12 +30,12 @@ public class BankAccount {
     public synchronized void deposit(double value, String name) {
         System.out.println("User " + name + " has deposited funds to the account in the amount of " + value);
         accountBalance = (accountBalance + value);
-        System.out.println("Account Balance: " + accountBalance);
+        System.out.println("Account Balance After Deposit: $" + accountBalance);
     }
 
     public synchronized void withdraw(double value, String name) {
         System.out.println("User " + name + " has withdrawn funds from the account in the amount of " + value);        
         accountBalance+=value;
-        System.out.println("Account Balance After Withdrawal: " + accountBalance);
+        System.out.println("Account Balance After Withdrawal: $" + accountBalance);
     }
 }
