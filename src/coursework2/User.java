@@ -38,7 +38,7 @@ public class User extends Thread{
             {
                  bankAccount.withdraw(transactionList.get(i),getUName());
             }
-            if(bankAccount.getAccountBalance()<=0)
+            else if(bankAccount.getAccountBalance()<=0)
             {
                 System.out.println("You currently have $" + bankAccount.getAccountBalance() + ". You cannot make anymore withdrawals at this time.");
                 break;
