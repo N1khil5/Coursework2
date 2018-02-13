@@ -27,13 +27,13 @@ public class BankAccount {
         return this.accountBalance;
     }
 
-    public void deposit(double value, String name) {
+    public synchronized void deposit(double value, String name) {
         System.out.println("User " + name + " has deposited funds to the account in the amount of " + value);
         accountBalance = (accountBalance + value);
         System.out.println("Account Balance: " + accountBalance);
     }
 
-    public void withdraw(double value, String name) {
+    public synchronized void withdraw(double value, String name) {
         System.out.println("User " + name + " has withdrawn funds from the account in the amount of " + value);        
         accountBalance+=value;
         System.out.println("Account Balance After Withdrawal: " + accountBalance);
