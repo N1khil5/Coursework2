@@ -6,28 +6,47 @@
 package coursework2;
 
 import java.util.ArrayList;
-
+ 
 /**
  *
  * @author Nikhil
  */
-public class User {
+public class User extends Thread{
     private String name;
     private String surname;
     private BankAccount bankAccount;
     private ArrayList<Double> transactionList; 
 
-    public User(String n, String s, BankAccount bA) {
+    public User(String n, String s, BankAccount bA, ArrayList<Double> tL) {
         this.name = n;
         this.surname = s;
         this.bankAccount = bA;
-        this.transactionList = new ArrayList<Double>();
+        this.transactionList = tL;
+    }
+
+    
+    public String getUName(){
+        return this.name+" "+this.surname;
     }
     
-    public void addTransaction (double transaction) {
-        
-        transactionList.add(transaction);
-        
+    @Override
+    public void run()
+    {
+        for(int i=0; i<transactionList.size();i++)
+        {
+            if(transactionList.get(i)<0)
+            {
+                 bankAccount.withdraw(transactionList.get(i),getUName());
+            }
+            if(bankAccount.getAccountBalance()<=0)
+            {
+                System.out.println("You currently have $" + bankAccount.getAccountBalance() + ". You cannot make anymore withdrawals at this time.");
+                break;
+            }
+            else
+            {
+                bankAccount.deposit(transactionList.get(i),getUName());
+            }
+        }
     }
-    
 }
