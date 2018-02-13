@@ -10,6 +10,7 @@ package coursework2;
  * @author Nikhil
  */
 public class BankAccount {
+
     private long accountNo;
     private double accountBalance;
 
@@ -17,24 +18,24 @@ public class BankAccount {
         this.accountNo = accountNo;
         this.accountBalance = accountBalance;
     }
-    
-    public long getAccountNo()
-    {
+
+    public long getAccountNo() {
         return this.accountNo;
     }
-    
-    public double getAccountBalance()
-    {
+
+    public double getAccountBalance() {
         return this.accountBalance;
     }
-    
-    public void deposit(double value, User u)
-    {
-        //Code to be implemented here
+
+    public void deposit(double value, String name) {
+        System.out.println("User " + name + " has deposited funds to the account in the amount of " + value);
+        accountBalance = (accountBalance + value);
+        System.out.println("Account Balance: " + accountBalance);
     }
-    
-    public void withdraw(double value, User u)
-    {
-        //Code to be implemented here
+
+    public void withdraw(double value, String name) {
+        System.out.println("User " + name + " has withdrawn funds from the account in the amount of " + value);        
+        accountBalance+=value;
+        System.out.println("Account Balance After Withdrawal: " + accountBalance);
     }
 }
